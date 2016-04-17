@@ -15,6 +15,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'digitaltoad/vim-pug'
 " Jade syntax
 Plugin 'groenewege/vim-less'
+" Surround - ci" on steroids
+Plugin 'tpope/vim-surround'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -32,9 +34,14 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
-Plugin 'jnurmine/Zenburn'
-Plugin 'nanotech/jellybeans.vim'
+" Git difference like sublime
+Plugin 'mhinz/vim-signify'
+" Comment
+Plugin 'tomtom/tcomment_vim'
+" Autocomplete
 Bundle 'Valloric/YouCompleteMe'
+" Add bunch of color schemes
+Bundle 'flazz/vim-colorschemes'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -50,6 +57,9 @@ set foldlevel=99
 
 " NNOREMAPS
 
+" comment / decomment & normal comment behavior
+vmap <C-/> gcc
+
 " twice a leader to switch buffer
 nnoremap <leader><leader> <c-^>
 
@@ -64,6 +74,9 @@ let g:ycm_autoclose_preview_window_after_completion=1
 
 " Make python pretty
 let python_hightlight_all=1
+
+" set powerline always visible
+set laststatus=2
 
 " Ignore pyc files
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
@@ -107,6 +120,12 @@ syntax enable
 set nu
 " No wrapping to lines!
 set nowrap
+" Show matching bracket
+set showmatch
+" show suggestions on vim commands in command menu
+set wildmenu
+" auto reload file if file was changed elsewere
+set autoread
 " Backspace throught everything!
 set backspace=indent,eol,start
 " Make clipboard normal
@@ -114,6 +133,13 @@ set clipboard=unnamed
 set formatoptions+=t
 " Searching
 set hlsearch  " hightlight matches
+set incsearch  " incremental search
+set ignorecase  " search with ignorecase
+set smartcase  " If any word has Big letter search with case
+" Mouse support
+if has('mouse')
+  set mouse=a
+endif
 " sHow tabs
 set listchars=tab:>-
 set list

@@ -68,6 +68,9 @@ export MAGICK_HOME=/usr/local/Cellar/imagemagick/6.9.2-8/
 export DYLD_FALLBACK_LIBRARY_PATH="/usr/lib:/Applications/Postgres.app/Contents/MacOS/lib:$DYLD_LIBRARY_PATH"
 export DYLD_LIBRARY_PATH=/Library/PostgreSQL/9.4/lib
 
+# tmuxp ws asking for this
+export DISABLE_AUTO_TITLE="true"
+
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
