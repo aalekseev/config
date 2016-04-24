@@ -14,23 +14,110 @@ windows:
   - window_name: wmnews
     layout: 5424,167x43,0,0{111x43,0,0,0,55x43,112,0[55x21,112,0,2,55x21,112,22,3]}
     automatic_rename: false 
-    start_directory: /Developer/setion
-    shell_command_before: venv setion
+    start_directory: /Developer/wm-news
     panes:
       - shell_command:
         - vim
         focus: true
-      - shell_command: ./manage.py runserver
+      - blank
       - git status
   - window_name: janasegetti
     layout: 5424,167x43,0,0{111x43,0,0,0,55x43,112,0[55x21,112,0,2,55x21,112,22,3]}
     automatic_rename: false
     start_directory: /Developer/janasegetti
-    shell_command_before: venv janasegetti
+    shell_command_before: workon janasegetti
     panes:
       - shell_command:
         - vim
         focus: true
-      - shell_command: ./manage.py runserver
+      - blank
+      - git status
+  - window_name: dps
+    layout: 5424,167x43,0,0{111x43,0,0,0,55x43,112,0[55x21,112,0,2,55x21,112,22,3]}
+    automatic_rename: false
+    start_directory: /Developer/dps
+    shell_command_before: workon dps
+    panes:
+      - shell_command:
+        - vim
+        focus: true
+      - blank
+      - git status
+  - window_name: golfzone
+    layout: 5424,167x43,0,0{111x43,0,0,0,55x43,112,0[55x21,112,0,2,55x21,112,22,3]}
+    automatic_rename: false
+    start_directory: /Developer/golfzon
+    shell_command_before: workon golfzone
+    panes:
+      - shell_command:
+        - vim
+        focus: true
+      - blank
+      - git status
+  - window_name: alezzy
+    layout: 5424,167x43,0,0{111x43,0,0,0,55x43,112,0[55x21,112,0,2,55x21,112,22,3]}
+    automatic_rename: false
+    start_directory: /Developer/alezzy
+    shell_command_before: workon alezzy
+    panes:
+      - shell_command:
+        - vim
+        focus: true
+      - blank
+      - git status
+  - window_name: setion
+    layout: 5424,167x43,0,0{111x43,0,0,0,55x43,112,0[55x21,112,0,2,55x21,112,22,3]}
+    automatic_rename: false
+    start_directory: /Developer/alezzy
+    shell_command_before: workon alezzy
+    panes:
+      - shell_command:
+        - vim
+        focus: true
+      - blank
+      - git status
+  - window_name: laminat
+    layout: 5424,167x43,0,0{111x43,0,0,0,55x43,112,0[55x21,112,0,2,55x21,112,22,3]}
+    automatic_rename: false
+    start_directory: /Developer/laminat
+    shell_command_before: workon laminatti
+    panes:
+      - shell_command:
+        - vim
+        focus: true
+      - blank
+      - git status
+  - window_name: napoleon
+    layout: 5424,167x43,0,0{111x43,0,0,0,55x43,112,0[55x21,112,0,2,55x21,112,22,3]}
+    automatic_rename: false
+    start_directory: /Developer/napoleon
+    shell_command_before: workon napoleon
+    panes:
+      - shell_command:
+        - vim
+        focus: true
+      - blank
+      - git status
+  - window_name: ekaterina
+    layout: 5424,167x43,0,0{111x43,0,0,0,55x43,112,0[55x21,112,0,2,55x21,112,22,3]}
+    automatic_rename: false
+    start_directory: /Developer/ekaterina
+    shell_command_before: workon ekaterina
+    panes:
+      - shell_command:
+        - vim
+        focus: true
+      - blank
+      - git status
+  - window_name: basehouse
+    layout: 5424,167x43,0,0{111x43,0,0,0,55x43,112,0[55x21,112,0,2,55x21,112,22,3]}
+    automatic_rename: false
+    start_directory: /Developer/basehaus
+    shell_command_before: workon basehaus
+    panes:
+      - shell_command:
+        - vim
+        focus: true
+      - blank
       - git status
 

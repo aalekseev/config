@@ -56,7 +56,10 @@ plugins=(git themes django pip python postgres z colored-man-pages command-not-f
 
 # User configuration
 
-export DYLD_LIBRARY_PATH=/usr/local/mysql-5.6.10-osx10.7-x86_64/lib/:$DYLD_LIBRARY_PATH
+#virtualenvwrapper
+export WORKON_HOME=/Developer/VENV
+export PROJECT_HOME=/Developer
+source /usr/local/bin/virtualenvwrapper.sh
 
 export PATH="/Users/anton/.node/lib/node_modules:/secret:/usr/local/go/bin:/Users/anton/.node/bin:/usr/local/lib/node_modules:/usr/local/share/npm/bin:/usr/local/bin:/usr/local/bin/npm:/Users/anton/.rvm/gems/ruby-2.1.5/bin:/Users/anton/.rvm/gems/ruby-2.1.5@global/bin:/Users/anton/.rvm/rubies/ruby-2.1.5/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4:/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7:/Users/anton/bin:/Users/anton/.rvm/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local/lib:/usr/local/mysql/lib/"
 export GOPATH="/Developer/go"
@@ -106,7 +109,7 @@ alias psql="(. ~/.bash_profile; unset DYLD_FALLBACK_LIBRARY_PATH; psql)";
 alias pm="python manage.py"
 alias go="git checkout"
 alias gs="git status"
-alias ga="git add"
+alias ga="git add -p"
 alias gm="git commit"
 alias pmr="python manage.py runserver"
 alias pms="python manage.py schemamigration"
