@@ -68,8 +68,8 @@ windows:
   - window_name: setion
     layout: 5424,167x43,0,0{111x43,0,0,0,55x43,112,0[55x21,112,0,2,55x21,112,22,3]}
     automatic_rename: false
-    start_directory: /Developer/alezzy
-    shell_command_before: workon alezzy
+    start_directory: /Developer/setion
+    shell_command_before: workon setion
     panes:
       - shell_command:
         - vim

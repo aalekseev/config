@@ -10,23 +10,33 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-
 " Jade syntax
 Plugin 'digitaltoad/vim-pug'
-" Jade syntax
+" LESS syntax
 Plugin 'groenewege/vim-less'
+" JS syntax
+Plugin 'pangloss/vim-javascript'
+" JSON syntax
+Plugin 'elzr/vim-json'
+" Sass, SCSS, Haml
+Plugin 'tpope/vim-haml'
+" Indent Guides
+Plugin 'nathanaelkane/vim-indent-guides'
+" Python autocompletion
+Plugin 'davidhalter/jedi-vim'
+" Source code browser
+Plugin 'majutsushi/tagbar'
 " Surround - ci" on steroids
 Plugin 'tpope/vim-surround'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Supersearch with control+P
 Plugin 'kien/ctrlp.vim'
 " Git integration
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
-" Python linting
-Plugin 'nvie/vim-flake8'
 " Ferret supersearch
 Plugin 'wincent/ferret'
 " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -37,11 +47,13 @@ Plugin 'vim-airline/vim-airline'
 " Git difference like sublime
 Plugin 'mhinz/vim-signify'
 " Comment
-Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-commentary'
 " Autocomplete
 Bundle 'Valloric/YouCompleteMe'
 " Add bunch of color schemes
 Bundle 'flazz/vim-colorschemes'
+" Python-mode
+Bundle 'klen/python-mode'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -81,16 +93,6 @@ set laststatus=2
 " Ignore pyc files
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
-" Python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-	project_base_dir = os.environ['VIRTUAL_ENV']
-	activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-	execfile(activate_this, dict(__file__=activate_this))
-EOF
-
 " Proper indentation for python files
 au BufNewFile, BufRead *.py
   \ set tabstop=4
@@ -112,6 +114,10 @@ set fileformat=unix
 
 " Mark trailing whitespaces as bad
 au BufRead, BufNewFile *.py, *.pyw, *.c, *.h match BadWhitespace /\s\+$/
+
+" Now you can see whitespaces and end of line!
+" set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+" set list
 
 let g:airline_powerline_fonts = 1
 
@@ -140,10 +146,38 @@ set smartcase  " If any word has Big letter search with case
 if has('mouse')
   set mouse=a
 endif
-" sHow tabs
-set listchars=tab:>-
-set list
 " Vandle ends, and filetype on
 filetype plugin indent on
-" set background=light
 color jellybeans 
+let g:python_host_prog = '/usr/local/bin/python2.7'
+
+" pymode settings
+let g:pymode = 1  " initialize plugin
+let g:pymode_doc = 1
+let g:pymode_doc_key = 'K'
+let g:pymode_trim_whitespaces = 1  " trim unused whitespaces
+let g:pymode_options = 1  " setup default options
+let g:pymode_options_max_line_length = 79  " setup max length
+let g:pymode_options_colorcolumn = 1  " color column if line too long
+let g:pymode_indent = 1  " enable PEP8 indent
+let g:pymode_folding = 0  " python code folding
+let g:pymode_motion = 1  " enable pymode motion
+let g:pymode_lint = 1  " turn on code checking
+let g:pymode_lint_on_fly = 1  " code linting on a fly
+let g:pymode_lint_message = 1  " show error message if cursor placed on a line
+let g:pymode_rope = 0  " enable rope refactoring
+" let g:pymode_rope_completion = 1  " enable auto completion
+" let g:pymode_rope_complete_on_dot = 1  " enable autocompletion on dot
+" let g:pymode_rope_autoimport_import_after_complete = 0  " handle unresolved imports
+let g:pymode_syntax = 1  " enable pymode syntax
+let g:pymode_syntax_all = 1  " all python hightlights
+let g:pymode_syntax_highlight_self = g:pymode_syntax_all  " highlight self keyword
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all  " indent errors
+let g:pymode_syntax_space_errors = g:pymode_syntax_all  " space errors
+let g:pymode_syntax_docstrings = g:pymode_syntax_all
+let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all
+let g:pymode_syntax_builtin_types = g:pymode_syntax_all
+let g:pymode_syntax_builtin_objs = g:pymode_syntax_all
+let g:indent_guides_enable = 1
+
+autocmd Vimenter * IndentGuidesEnable

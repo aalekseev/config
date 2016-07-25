@@ -5,8 +5,9 @@ export ZSH=/Users/anton/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME=nanotech
+# ZSH_THEME=nanotech
 # ZSH_THEME=avit
+ZSH_THEME=miloshadzic
 
 DEFAULT_USER=anton
 
@@ -57,11 +58,11 @@ plugins=(git themes django pip python postgres z colored-man-pages command-not-f
 # User configuration
 
 #virtualenvwrapper
-export WORKON_HOME=/Developer/VENV
-export PROJECT_HOME=/Developer
+export WORKON_HOME=/Volumes/__init__/wm/VENV
+export PROJECT_HOME=/Volumes/__init__/wm
 source /usr/local/bin/virtualenvwrapper.sh
 
-export PATH="/Users/anton/.node/lib/node_modules:/secret:/usr/local/go/bin:/Users/anton/.node/bin:/usr/local/lib/node_modules:/usr/local/share/npm/bin:/usr/local/bin:/usr/local/bin/npm:/Users/anton/.rvm/gems/ruby-2.1.5/bin:/Users/anton/.rvm/gems/ruby-2.1.5@global/bin:/Users/anton/.rvm/rubies/ruby-2.1.5/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4:/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7:/Users/anton/bin:/Users/anton/.rvm/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local/lib:/usr/local/mysql/lib/"
+export PATH="/Users/anton/.node/lib/node_modules:/secret:/usr/local/go/bin:/Users/anton/.node/bin:/usr/local/lib/node_modules:/usr/local/share/npm/bin:/usr/local/bin:/usr/local/bin/npm:/Users/anton/.rvm/gems/ruby-2.1.5/bin:/Users/anton/.rvm/gems/ruby-2.1.5@global/bin:/Users/anton/.rvm/rubies/ruby-2.1.5/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4:/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7:/Users/anton/bin:/Users/anton/.rvm/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local/lib:/usr/local/mysql/lib/:/usr/local/Cellar/gettext/0.19.7/bin"
 export GOPATH="/Developer/go"
 # export MANPATH="/usr/local/man:$MANPATH"
 HOMEBREW_GITHUB_API_TOKEN=548c76ecfe1cd1bc055a69e98c227776436f202f
@@ -101,10 +102,8 @@ export EDITOR='vim'
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
+alias zshconfig="vim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias p3="python3"
-alias edit="subl"
 alias psql="(. ~/.bash_profile; unset DYLD_FALLBACK_LIBRARY_PATH; psql)";
 alias pm="python manage.py"
 alias go="git checkout"
@@ -114,9 +113,14 @@ alias gm="git commit"
 alias pmr="python manage.py runserver"
 alias pms="python manage.py schemamigration"
 alias pmm="python manage.py migrate"
-alias pyc="find . -name='*.pyc' -delete"
+alias pyc="find . -name '*.pyc' -delete"
 alias rpi="ssh pi@192.168.1.38"
+alias 2wm="ssh robotehnik@2-wm.ru -p 2425"
 
+function xdiff() { git diff $1 HEAD --name-only | grep -v 'migrations' | grep -v 'static/fonts' | grep -v 'static/img' | xargs git diff $1 -- }
 function proj() { deactivate && cd /Developer/$1 && source /Developer/VENV/$1/bin/activate }
 function venv() { source /Developer/VENV/$1/bin/activate }
 function cov() { coverage run manage.py test $1 --nologcapture }
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+source /usr/local/opt/autoenv/activate.sh
