@@ -8,6 +8,7 @@ export ZSH=/Users/anton/.oh-my-zsh
 # ZSH_THEME=nanotech
 # ZSH_THEME=avit
 ZSH_THEME=miloshadzic
+# ZSH_THEME=spaceship
 
 DEFAULT_USER=anton
 
@@ -58,8 +59,8 @@ plugins=(git themes django pip python postgres z colored-man-pages command-not-f
 # User configuration
 
 #virtualenvwrapper
-export WORKON_HOME=/Volumes/__init__/wm/VENV
-export PROJECT_HOME=/Volumes/__init__/wm
+export WORKON_HOME=~/code/VENV
+export PROJECT_HOME=~/code/
 source /usr/local/bin/virtualenvwrapper.sh
 
 export PATH="/Users/anton/.node/lib/node_modules:/secret:/usr/local/go/bin:/Users/anton/.node/bin:/usr/local/lib/node_modules:/usr/local/share/npm/bin:/usr/local/bin:/usr/local/bin/npm:/Users/anton/.rvm/gems/ruby-2.1.5/bin:/Users/anton/.rvm/gems/ruby-2.1.5@global/bin:/Users/anton/.rvm/rubies/ruby-2.1.5/bin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Frameworks/Python.framework/Versions/3.4/bin/python3.4:/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7:/Users/anton/bin:/Users/anton/.rvm/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:/usr/local/lib:/usr/local/mysql/lib/:/usr/local/Cellar/gettext/0.19.7/bin"
@@ -118,9 +119,15 @@ alias rpi="ssh pi@192.168.1.38"
 alias 2wm="ssh robotehnik@2-wm.ru -p 2425"
 
 function xdiff() { git diff $1 HEAD --name-only | grep -v 'migrations' | grep -v 'static/fonts' | grep -v 'static/img' | xargs git diff $1 -- }
-function proj() { deactivate && cd /Developer/$1 && source /Developer/VENV/$1/bin/activate }
-function venv() { source /Developer/VENV/$1/bin/activate }
 function cov() { coverage run manage.py test $1 --nologcapture }
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 source /usr/local/opt/autoenv/activate.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+
+export PATH="$HOME/.yarn/bin:$PATH"
+
+export NVM_DIR="/Users/anton/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
