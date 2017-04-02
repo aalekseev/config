@@ -1,27 +1,31 @@
 " We want Vim, not vi
-set nocompatible              
+set nocompatible
 
 call plug#begin('$HOME/.vim/plugged')
-" Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'Valloric/YouCompleteMe', { 'for': 'python' }
+Plug 'Valloric/YouCompleteMe', { 'for': ['python', 'javascript'] }
 Plug 'digitaltoad/vim-pug', { 'for': 'jade' }
-Plug 'elzr/vim-json', { 'for': 'json'}
-Plug 'groenewege/vim-less', { 'for': 'less'}
+Plug 'elzr/vim-json', { 'for': 'json' }
+Plug 'groenewege/vim-less', { 'for': 'less' }
 Plug 'janko-m/vim-test', { 'for': 'python' }
-Plug 'jistr/vim-nerdtree-tabs'
-Plug 'kien/ctrlp.vim'
-Plug 'majutsushi/tagbar'
+Plug 'kien/ctrlp.vim', { 'on': 'CtrlP' }
+Plug 'majutsushi/tagbar', { 'on': 'TagBarToggle' }
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'scrooloose/nerdtree'
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
+Plug 'honza/dockerfile.vim', { 'for': 'dockerfile' }
+Plug 'junegunn/seoul256.vim'
+Plug 'metakirby5/codi.vim', { 'for': ['python', 'javascript'] }
 Plug 'tmhedberg/SimpylFold'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'wincent/ferret'
+Plug 'wincent/ferret', { 'on': ['Ack', 'Acks'] }
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+
 call plug#end()
 
 " Set encoding
@@ -110,7 +114,7 @@ au BufNewFile, BufRead *.js
 
 " Proper indentation for other files
 " Indent according to previous line.
-set autoindent             
+set autoindent
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -161,7 +165,8 @@ let g:python_host_prog='/usr/local/bin/python2.7'
 " let g:solarized_termcolors = 16
 " let g:solarized_termtrans = 1
 "colorscheme solarized
-color monokai
+" color monokai
+color seoul256
 set t_Co=256
 
 
@@ -175,3 +180,4 @@ set updatecount=100
 set undofile
 set undodir=$HOME/.vim/files/undo/
 " set viminfo='100,n$HOME/.vim/files/info/viminfo
+let g:ycm_log_level = 'info'
