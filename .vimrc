@@ -3,28 +3,28 @@ set nocompatible
 
 call plug#begin('$HOME/.vim/plugged')
 Plug 'Valloric/YouCompleteMe', { 'for': ['python', 'javascript'] }
-Plug 'digitaltoad/vim-pug', { 'for': 'jade' }
+Plug 'digitaltoad/vim-pug', { 'for': ['jade', 'pug'] }
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'groenewege/vim-less', { 'for': 'less' }
-Plug 'janko-m/vim-test', { 'for': 'python' }
-Plug 'kien/ctrlp.vim', { 'on': 'CtrlP' }
+Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar', { 'on': 'TagBarToggle' }
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'mhinz/vim-signify'
 Plug 'mhinz/vim-startify'
+Plug 'honza/vim-snippets'
+Plug 'dracula/vim'
+Plug 'sirver/ultisnips'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'honza/dockerfile.vim', { 'for': 'dockerfile' }
-Plug 'junegunn/seoul256.vim'
 Plug 'metakirby5/codi.vim', { 'for': ['python', 'javascript'] }
 Plug 'tmhedberg/SimpylFold'
 Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'wincent/ferret', { 'on': ['Ack', 'Acks'] }
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+Plug 'dodie/vim-disapprove-deep-indentation', { 'for': ['python', 'javascript'] }
 
 call plug#end()
 
@@ -44,18 +44,9 @@ nnoremap <leader>c :TComment<CR>
 " twice a leader to switch buffer
 nnoremap <leader><leader> <c-^>
 " Toggle NERD Tree
-nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-]> :TagbarToggle<CR>
 " Enable folding with a spacebar
 nnoremap <space> za
-
-" Test-vim nnoremaps
-nmap <silent> <leader>t :TestNearest<CR>
-nmap <silent> <leader>T :TestFile<CR>
-nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>l :TestLast<CR>
-nmap <silent> <leader>g :TestVisit<CR>
-let test#python#runner = 'pytest'
 
 " See the docstrings for folded code
 let g:SimplyFold_docstring_preview=1
@@ -112,6 +103,16 @@ au BufNewFile, BufRead *.js
   \ set textwidth=79
   \ set colorcolumn=79
 
+au BufNewFile, BufRead *.yml
+  \ set tabstop=2
+  \ set softtabstop=2
+  \ set shiftwidth=2
+
+au BufNewFile, BufRead *.html
+  \ set tabstop=2
+  \ set softtabstop=2
+  \ set shiftwidth=2
+  \ set smartindent
 " Proper indentation for other files
 " Indent according to previous line.
 set autoindent
@@ -158,17 +159,8 @@ endif
 " fuzzt search
 set path+=**
 
-let g:python_host_prog='/usr/local/bin/python2.7'
-" set background=dark
-" let g:solirized_visibility = "hight"
-" let g:solirized_contrast = "hight"
-" let g:solarized_termcolors = 16
-" let g:solarized_termtrans = 1
-"colorscheme solarized
-" color monokai
-color seoul256
+color dracula
 set t_Co=256
-
 
 " Put all temporary files under the same directory.
 set backup
@@ -181,3 +173,15 @@ set undofile
 set undodir=$HOME/.vim/files/undo/
 " set viminfo='100,n$HOME/.vim/files/info/viminfo
 let g:ycm_log_level = 'info'
+
+" Vim Snippets config
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+
+" Netrw settings
+let g:netrw_list_hide = '.*\.swp$,'
+let g:netrw_list_hide .= '\.pyc$,'
+
+filetype indent on
