@@ -1,0 +1,10 @@
+[core]
+	excludesfile = $HOME/.gitignore_global
+	editor = vim
+	blank-at-eof = false
+[user]
+	name = Антон Алексеев
+[merge]
+	tool = vimdiff
+[commit]
+	template = $HOME/.gitmessage.txt

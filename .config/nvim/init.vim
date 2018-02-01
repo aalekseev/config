@@ -20,6 +20,7 @@ filetype plugin indent on		" use vim file types plugin for syntax and indentatio
 
 set shell=zsh
 set encoding=utf-8
+set ff=unix						" unix line endings
 set history=500					" vim history lines
 set hidden           		    " switch bw buff without having to save first
 set mouse=a  					" activate mouse support always
@@ -31,7 +32,7 @@ set splitbelow  				" open new window below curr window
 set splitright  				" open new win to the right or curr window
 set cursorline  				" set current light highlight
 set report=0  					" always report changed lines
-set synmaxcol=200  				" highlight only first 200 columns (performance boost?)
+set synmaxcol=500  				" highlight only first 200 columns (performance boost?)
 set showmatch  					" highlight matching brackets
 set wildmenu  					" activate wildmenu
 set autoread  					" autoreload file if it was changed elsevere
